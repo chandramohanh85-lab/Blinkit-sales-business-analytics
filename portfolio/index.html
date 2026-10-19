@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Chandra Mohan Hembram's Data Analyst portfolio featuring Power BI dashboards and business analysis projects.">
+  <title>Chandra Mohan Hembram | Data Analyst Portfolio</title>
+  <style>
+    :root {
+      --bg: #08120f;
+      --surface: #10221b;
+      --surface-soft: #142d25;
+      --border: #2b5140;
+      --text: #f3f7f3;
+      --muted: #b5c5bb;
+      --lime: #e7f6b4;
+      --green: #82c99e;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: radial-gradient(ellipse at top right, #173629 0%, var(--bg) 43%);
+      color: var(--text);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      line-height: 1.65;
+      overflow-wrap: break-word;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(8,18,15,.94); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(130,201,158,.18);
+    }
+    .nav { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-weight: 850; letter-spacing: .04em; white-space: nowrap; }
+    .brand span { color: var(--lime); }
+    .nav-links { display: flex; align-items: center; gap: 24px; color: var(--muted); font-size: .94rem; }
+    .nav-links a:hover { color: var(--lime); }
+    .hero { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr); gap: 42px; align-items: center; padding-block: 82px 68px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; padding: 6px 12px; border: 1px solid var(--border); border-radius: 999px; color: var(--lime); background: rgba(20,45,37,.68); font-size: .8rem; font-weight: 700; letter-spacing: .06em; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 12px var(--green); }
+    h1 { max-width: 760px; font-size: clamp(2.55rem, 5.7vw, 4.45rem); line-height: 1.08; letter-spacing: -.045em; margin: 22px 0 18px; overflow-wrap: normal; }
+    h1 span { color: var(--lime); }
+    .hero-copy { max-width: 690px; color: var(--muted); font-size: 1.08rem; margin: 0; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 16px; border: 1px solid var(--border); border-radius: 10px; font-weight: 750; font-size: .92rem; text-align: center; transition: transform .18s ease, border-color .18s ease; }
+    .button:hover { transform: translateY(-2px); border-color: var(--green); }
+    .button-primary { background: var(--lime); border-color: var(--lime); color: #17251c; }
+    .profile-card { min-width: 0; padding: 25px; border: 1px solid var(--border); border-radius: 20px; background: linear-gradient(145deg, rgba(20,45,37,.96), rgba(12,27,21,.96)); box-shadow: 0 20px 55px rgba(0,0,0,.2); }
+    .initials { width: 68px; height: 68px; display: grid; place-items: center; border-radius: 18px; background: var(--lime); color: #17251c; font-weight: 900; font-size: 1.6rem; margin-bottom: 17px; }
+    .profile-card h2 { margin: 0 0 3px; font-size: 1.2rem; line-height: 1.35; }
+    .profile-card p { margin: 0; color: var(--muted); font-size: .92rem; }
+    .stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 20px; }
+    .stat { min-width: 0; padding: 12px; border: 1px solid rgba(130,201,158,.16); border-radius: 11px; background: rgba(8,18,15,.48); }
+    .stat strong { display: block; color: var(--lime); font-size: 1.04rem; }
+    .stat small { display: block; color: var(--muted); font-size: .78rem; line-height: 1.4; }
+    section { padding-block: 48px; }
+    .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 28px; margin-bottom: 24px; }
+    .kicker { color: var(--green); font-size: .76rem; font-weight: 850; letter-spacing: .15em; text-transform: uppercase; }
+    .section-title { margin: 5px 0 0; font-size: clamp(1.75rem, 3.7vw, 2.45rem); line-height: 1.2; letter-spacing: -.035em; }
+    .section-intro { max-width: 470px; margin: 0; color: var(--muted); }
+    .about-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 18px; }
+    .panel { min-width: 0; padding: 23px; border: 1px solid var(--border); border-radius: 16px; background: rgba(16,34,27,.82); }
+    .panel h3 { margin: 0; font-size: 1.1rem; }
+    .panel p { color: var(--muted); margin: 9px 0 0; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+    .tag { padding: 6px 10px; border: 1px solid #315b48; border-radius: 999px; background: #142d25; color: #e0ece3; font-size: .84rem; }
+    .project-card { min-width: 0; overflow: hidden; border: 1px solid var(--border); border-radius: 20px; background: linear-gradient(145deg, #12291f, #0c1a14); }
+    .project-intro { padding: 25px 25px 18px; }
+    .project-label { color: var(--lime); font-size: .76rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+    .project-intro h3 { margin: 7px 0 8px; font-size: clamp(1.25rem, 3vw, 1.55rem); line-height: 1.3; }
+    .project-intro p { max-width: 850px; margin: 0; color: var(--muted); }
+    .dashboard-frame { margin: 0 25px; padding: 9px; border: 1px solid #35634e; border-radius: 13px; background: #091610; }
+    .dashboard-image { width: 100%; height: auto; border-radius: 7px; }
+    .project-details { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; padding: 24px 25px 26px; }
+    .project-details h4 { margin: 0 0 8px; font-size: 1rem; }
+    .project-details ul { margin: 0; padding-left: 19px; color: var(--muted); }
+    .project-details li { margin-block: 5px; }
+    .project-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 17px; }
+    .project-actions .button { font-size: .86rem; }
+    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px; }
+    .small-card { min-width: 0; padding: 20px; border: 1px solid var(--border); border-radius: 15px; background: rgba(16,34,27,.7); }
+    .small-card .symbol { color: var(--lime); font-size: 1.35rem; }
+    .small-card h3 { margin: 8px 0 5px; font-size: 1.02rem; }
+    .small-card p { margin: 0; color: var(--muted); font-size: .91rem; }
+    .contact-box { display: flex; align-items: center; justify-content: space-between; gap: 25px; padding: 28px; border: 1px solid var(--border); border-radius: 20px; background: linear-gradient(120deg, #18382b, #10231b); }
+    .contact-box h2 { margin: 0 0 6px; font-size: 1.65rem; }
+    .contact-box p { margin: 0; color: var(--muted); }
+    footer { margin-top: 35px; padding: 25px 0 32px; border-top: 1px solid rgba(130,201,158,.15); color: var(--muted); font-size: .84rem; }
+    .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+    @media (max-width: 820px) {
+      .hero { grid-template-columns: minmax(0, 1fr); padding-block: 58px 45px; gap: 25px; }
+      .profile-card { max-width: 520px; }
+      .section-heading { display: block; }
+      .section-intro { margin-top: 10px; }
+      .about-grid, .project-details { grid-template-columns: minmax(0, 1fr); }
+      .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .contact-box { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 540px) {
+      .container { width: calc(100% - 28px); }
+      .nav { min-height: 62px; }
+      .nav-links { gap: 12px; font-size: .82rem; }
+      .nav-links a:nth-child(2) { display: none; }
+      .hero { padding-top: 43px; }
+      .cards { grid-template-columns: minmax(0, 1fr); }
+      .project-intro { padding: 20px 17px 15px; }
+      .dashboard-frame { margin-inline: 12px; padding: 6px; }
+      .project-details { padding: 20px 17px; }
+      .profile-card, .panel, .contact-box { padding: 19px; }
+      .button { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <nav class="container nav" aria-label="Main navigation">
+    <a class="brand" href="#home">CH<span>.</span> DATA</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="container hero" id="home">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> DATA ANALYTICS PORTFOLIO</div>
+      <h1>Turning data into <span>clear insights.</span></h1>
+      <p class="hero-copy">Hi, I'm <strong>Chandra Mohan Hembram</strong>, an aspiring Data Analyst interested in using data visualisation and analytical thinking to understand business performance and support better decisions.</p>
+      <div class="actions">
+        <a class="button button-primary" href="#projects">Explore my projects ↓</a>
+        <a class="button" href="https://github.com/chandramohanh85-lab" target="_blank" rel="noopener noreferrer">GitHub profile ↗</a>
+      </div>
+    </div>
+    <aside class="profile-card">
+      <div class="initials" aria-hidden="true">CH</div>
+      <h2>Chandra Mohan Hembram</h2>
+      <p>Aspiring Data Analyst · Power BI · Python</p>
+      <div class="stats">
+        <div class="stat"><strong>Power BI</strong><small>Dashboards &amp; KPIs</small></div>
+        <div class="stat"><strong>Python</strong><small>Data analysis</small></div>
+        <div class="stat"><strong>DAX</strong><small>Business measures</small></div>
+        <div class="stat"><strong>Data quality</strong><small>Careful validation</small></div>
+      </div>
+    </aside>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-heading">
+        <div><div class="kicker">A little about me</div><h2 class="section-title">Curious about the story behind the numbers.</h2></div>
+        <p class="section-intro">I enjoy exploring datasets, building clear dashboards, and checking data quality before drawing conclusions.</p>
+      </div>
+      <div class="about-grid">
+        <div class="panel">
+          <h3>My approach</h3>
+          <p>I start by understanding the data, preparing it for analysis, exploring patterns, and presenting findings in a way that is easy to follow. I also document limitations when the available data does not support a firm conclusion.</p>
+        </div>
+        <div class="panel" id="skills">
+          <h3>Tools &amp; skills</h3>
+          <div class="tags">
+            <span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Power Query</span>
+            <span class="tag">Python</span><span class="tag">pandas</span><span class="tag">Excel</span>
+            <span class="tag">Data visualisation</span><span class="tag">KPI analysis</span><span class="tag">Data quality</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-heading">
+        <div><div class="kicker">Selected work</div><h2 class="section-title">Featured project</h2></div>
+        <p class="section-intro">A business performance dashboard built to explore several operational areas in one place.</p>
+      </div>
+      <article class="project-card">
+        <div class="project-intro">
+          <div class="project-label">Power BI · Business intelligence</div>
+          <h3>Blinkit Sales &amp; Business Performance Analytics</h3>
+          <p>I built a single-page Power BI dashboard to explore sales, product performance, delivery trends, customer feedback, marketing campaigns, and inventory activity.</p>
+        </div>
+        <div class="dashboard-frame">
+          <img class="dashboard-image" src="Blinkit_Sales_Business_Performance_Dashboard.png" alt="Blinkit Sales and Business Performance Power BI dashboard">
+        </div>
+        <div class="project-details">
+          <div>
+            <h4>What I explored</h4>
+            <ul>
+              <li>Sales KPIs and monthly trends</li>
+              <li>Category and product sales</li>
+              <li>Delivery status and delivery-time patterns</li>
+              <li>Customer sentiment and payment methods</li>
+              <li>Marketing ROAS and inventory data quality</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Selected findings</h4>
+            <ul>
+              <li>69.40% of delivery records were marked on time.</li>
+              <li>Dairy &amp; Breakfast contributed 12.86% of item-level sales.</li>
+              <li>Campaign ROAS ranged from approximately 1.94× to 2.03×.</li>
+              <li>Sales and inventory data limitations were documented.</li>
+            </ul>
+            <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Power Query</span><span class="tag">Python / pandas checks</span></div>
+            <div class="project-actions">
+              <a class="button button-primary" href="https://github.com/chandramohanh85-lab/Blinkit-sales-business-analytics" target="_blank" rel="noopener noreferrer">View project repository ↗</a>
+              <a class="button" href="https://github.com/chandramohanh85-lab/Blinkit-sales-business-analytics/blob/main/README.md" target="_blank" rel="noopener noreferrer">Read project README ↗</a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-heading">
+        <div><div class="kicker">What I bring</div><h2 class="section-title">A practical, careful approach.</h2></div>
+      </div>
+      <div class="cards">
+        <div class="small-card"><div class="symbol" aria-hidden="true">▦</div><h3>Dashboarding</h3><p>Presenting KPIs and patterns through focused, interactive visuals.</p></div>
+        <div class="small-card"><div class="symbol" aria-hidden="true">⌕</div><h3>Analysis</h3><p>Exploring trends, comparing groups, and asking business-focused questions.</p></div>
+        <div class="small-card"><div class="symbol" aria-hidden="true">✓</div><h3>Data quality</h3><p>Checking inconsistencies and being clear about what the data can support.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="contact-box">
+        <div><h2>Let's connect.</h2><p>I'm building my skills and projects in data analytics. Feel free to explore my work on GitHub.</p></div>
+        <div class="actions">
+          <a class="button button-primary" href="https://github.com/chandramohanh85-lab" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a class="button" href="https://github.com/chandramohanh85-lab/Blinkit-sales-business-analytics" target="_blank" rel="noopener noreferrer">Blinkit project ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner"><span>© 2026 Chandra Mohan Hembram</span><span>HTML &amp; CSS · GitHub Pages</span></div>
+</footer>
+</body>
+</html>
